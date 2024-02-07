@@ -1,0 +1,20 @@
+Content:
+    gen_sensor_dev:
+        root_dir: ${ROOT_DIR}/doc/content
+    moose:
+        root_dir: ${MOOSE_DIR}/framework/doc/content
+        content:
+            - js/*
+            - css/*
+            - contrib/**
+            - media/**
+Renderer:
+    type: MooseDocs.base.MaterializeRenderer
+Extensions:
+    MooseDocs.extensions.navigation:
+        name: gen_sensor_dev
+    MooseDocs.extensions.appsyntax:
+        executable: ${ROOT_DIR}
+        remove: !include ${MOOSE_DIR}/framework/doc/remove.yml
+        includes:
+            - include
