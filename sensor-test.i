@@ -44,7 +44,7 @@
       #noise_mean = 1
       #noise_std_dev = 0.1
       noise_std_dev_function = '0.1'
-      delay_function = '0.5'
+      delay_function = '2'
       drift_function = '0.0001*t'
       efficiency_function = '0.8'
       signalToNoise_function = '0.1'
