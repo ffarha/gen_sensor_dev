@@ -56,21 +56,44 @@
 []
 
 [Postprocessors]
+  # Volume pp
   [input_signal_pp]
     type = ElementAverageValue
     variable = temperature
+    execute_on = initial
   []
   [general_sensor_pp]
     type = GeneralSensorPostprocessor
+    execute_on = initial
     input_signal = input_signal_pp
-    #time = time_pp
     #noise_mean = 1
     #noise_std_dev = 0.1
-    noise_std_dev_function = '0'
+    noise_std_dev_function = '0.5'
     delay_function = '0.3'
     drift_function = '0.0001*t'
-    efficiency_function = '0.8'
-    signalToNoise_function = '0.0'
+    efficiency_function = '0.8*exp(-0.1*t)'
+    signalToNoise_function = '0.7*exp(-0.1*t)'
+    uncertainty_std_dev_function = '0.1'
+  []
+  # Surface pp
+  [input_surface_signal_pp]
+    type = SideDiffusiveFluxAverage
+    variable = temperature
+    boundary = right
+    diffusivity = thermal_conductivity
+    execute_on = initial
+  []
+  [surface_general_sensor_pp]
+    type = GeneralSensorPostprocessor
+    execute_on = initial
+    input_signal = input_surface_signal_pp
+    #noise_mean = 1
+    #noise_std_dev = 0.1
+    noise_std_dev_function = '0.5'
+    delay_function = '0.3'
+    drift_function = '0.0001*t'
+    efficiency_function = '0.8*exp(-0.1*t)'
+    signalToNoise_function = '0.7*exp(-0.1*t)'
     uncertainty_std_dev_function = '0.1'
   []
 []
