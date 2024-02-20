@@ -60,11 +60,11 @@
   [input_signal_pp]
     type = ElementAverageValue
     variable = temperature
-    execute_on = initial
+    #execute_on = initial
   []
   [general_sensor_pp]
     type = GeneralSensorPostprocessor
-    execute_on = initial
+    #execute_on = initial
     input_signal = input_signal_pp
     #noise_mean = 1
     #noise_std_dev = 0.1
@@ -74,6 +74,7 @@
     efficiency_function = '0.8*exp(-0.1*t)'
     signalToNoise_function = '0.7*exp(-0.1*t)'
     uncertainty_std_dev_function = '0.1'
+    end_time_ = 5
   []
   # Surface pp
   [input_surface_signal_pp]
@@ -81,11 +82,11 @@
     variable = temperature
     boundary = right
     diffusivity = thermal_conductivity
-    execute_on = initial
+    #execute_on = initial
   []
   [surface_general_sensor_pp]
     type = GeneralSensorPostprocessor
-    execute_on = initial
+    #execute_on = initial
     input_signal = input_surface_signal_pp
     #noise_mean = 1
     #noise_std_dev = 0.1
@@ -95,6 +96,7 @@
     efficiency_function = '0.8*exp(-0.1*t)'
     signalToNoise_function = '0.7*exp(-0.1*t)'
     uncertainty_std_dev_function = '0.1'
+    end_time_ = 5
   []
 []
 
