@@ -1,5 +1,9 @@
 Content:
+<<<<<<< HEAD
     gen_sensor_dev:
+=======
+    GenSensorDev:
+>>>>>>> 187cb9c02c41830508e4077dbe0c9f427fab19ff
         root_dir: ${ROOT_DIR}/doc/content
     moose:
         root_dir: ${MOOSE_DIR}/framework/doc/content
@@ -8,11 +12,21 @@ Content:
             - css/*
             - contrib/**
             - media/**
+<<<<<<< HEAD
 Renderer:
     type: MooseDocs.base.MaterializeRenderer
 Extensions:
     MooseDocs.extensions.navigation:
         name: gen_sensor_dev
+=======
+
+Renderer:
+    type: MooseDocs.base.MaterializeRenderer
+
+Extensions:
+    MooseDocs.extensions.navigation:
+        name: GenSensorDev
+>>>>>>> 187cb9c02c41830508e4077dbe0c9f427fab19ff
     MooseDocs.extensions.appsyntax:
         executable: ${ROOT_DIR}
         remove: !include ${MOOSE_DIR}/framework/doc/remove.yml

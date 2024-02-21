@@ -19,11 +19,11 @@
 
 [Kernels]
   [heat_conduction]
-    type = HeatConduction
+    type = ADHeatConduction
     variable = temperature
   []
   [heat_conduction_time_derivative]
-    type = HeatConductionTimeDerivative
+    type = ADHeatConductionTimeDerivative
     variable = temperature
   []
 []
@@ -45,7 +45,7 @@
 
 [Materials]
   [steel]
-    type = GenericConstantMaterial
+    type = ADGenericConstantMaterial
     prop_names = 'thermal_conductivity specific_heat density'
     prop_values = '18 0.466 80' # W/m*K, J/kg-K, kg/m^3 @ 296K
   []
@@ -66,45 +66,42 @@
     type = GeneralSensorPostprocessor
     #execute_on = initial
     input_signal = input_signal_pp
-    #noise_mean = 1
-    #noise_std_dev = 0.1
     noise_std_dev_function = '0.5'
     delay_function = '0.3'
     drift_function = '0.0001*t'
     efficiency_function = '0.8*exp(-0.1*t)'
     signalToNoise_function = '0.7*exp(-0.1*t)'
     uncertainty_std_dev_function = '0.1'
-    end_time_ = 5
+    proportional_weight = 1
+    integral_weight = 1
   []
   # Surface pp
   [input_surface_signal_pp]
     type = SideDiffusiveFluxAverage
     variable = temperature
     boundary = right
-    diffusivity = thermal_conductivity
+    diffusivity = 18
     #execute_on = initial
   []
   [surface_general_sensor_pp]
     type = GeneralSensorPostprocessor
     #execute_on = initial
     input_signal = input_surface_signal_pp
-    #noise_mean = 1
-    #noise_std_dev = 0.1
     noise_std_dev_function = '0.5'
     delay_function = '0.3'
     drift_function = '0.0001*t'
     efficiency_function = '0.8*exp(-0.1*t)'
     signalToNoise_function = '0.7*exp(-0.1*t)'
     uncertainty_std_dev_function = '0.1'
-    end_time_ = 5
+    proportional_weight = 1
+    integral_weight = 1
   []
 []
 
 [Executioner]
   type = Transient
-  dt = 1
   num_steps = 5
-  nl_abs_tol = 1e-8
+  dt = 1
   solve_type = NEWTON
   petsc_options_iname = '-pc_type -pc_hypre_type'
   petsc_options_value = 'hypre boomeramg'

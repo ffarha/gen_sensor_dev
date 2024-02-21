@@ -61,7 +61,11 @@ BUILD_EXEC         := yes
 DEP_APPS    ?= $(shell $(FRAMEWORK_DIR)/scripts/find_dep_apps.py $(APPLICATION_NAME))
 include $(FRAMEWORK_DIR)/app.mk
 
+<<<<<<< HEAD
 # Find all the gen_sensor_dev unit test source files and include their dependencies.
+=======
+# Find all the GenSensorDev unit test source files and include their dependencies.
+>>>>>>> 187cb9c02c41830508e4077dbe0c9f427fab19ff
 gen_sensor_dev_unit_srcfiles := $(shell find $(CURRENT_DIR)/src -name "*.C")
 gen_sensor_dev_unit_deps := $(patsubst %.C, %.$(obj-suffix).d, $(gen_sensor_dev_unit_srcfiles))
 -include $(gen_sensor_dev_unit_deps)

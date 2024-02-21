@@ -7,7 +7,11 @@
 //* Licensed under LGPL 2.1, please see LICENSE for details
 //* https://www.gnu.org/licenses/lgpl-2.1.html
 
+<<<<<<< HEAD
 #include "gen_sensor_devApp.h"
+=======
+#include "GenSensorDevApp.h"
+>>>>>>> 187cb9c02c41830508e4077dbe0c9f427fab19ff
 #include "gtest/gtest.h"
 
 // Moose includes
@@ -18,6 +22,11 @@
 #include <fstream>
 #include <string>
 
+<<<<<<< HEAD
+=======
+PerfLog Moose::perf_log("gtest");
+
+>>>>>>> 187cb9c02c41830508e4077dbe0c9f427fab19ff
 GTEST_API_ int
 main(int argc, char ** argv)
 {
@@ -25,7 +34,11 @@ main(int argc, char ** argv)
   testing::InitGoogleTest(&argc, argv);
 
   MooseInit init(argc, argv);
+<<<<<<< HEAD
   registerApp(gen_sensor_devApp);
+=======
+  registerApp(GenSensorDevApp);
+>>>>>>> 187cb9c02c41830508e4077dbe0c9f427fab19ff
   Moose::_throw_on_error = true;
   Moose::_throw_on_warning = true;
 
